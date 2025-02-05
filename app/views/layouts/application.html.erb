@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FirstProject</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class= "navbar">
+     <p>
+      <%= link_to 'На це витвір мистецтва', root_path, class: 'btn btn-outline-primary' %>
+     </p>
+     <p>
+      <%= link_to 'Мої питання', my_questions_path, class: 'btn btn-outline-primary' %>
+      </p>
+
+    <% if current_user.present? %>
+      <%= button_to 'Вийти', session_path, method: :delete,  class: 'btn btn-outline-secondary' %> 
+          <%= "Привіт #{current_user.nickname}" %>
+      <p class="mb mt message-notice"><%= flash[:notice]%></p>
+    <% else %>
+      <%= link_to 'Зареєструватися', new_user_path, class: 'btn btn-outline-primary' %>
+      <%= link_to 'Вхід', new_session_path, class: 'btn btn-outline-primary' %>
+    <%end%>
+  </div>
+  <% if flash.present? %> 
+    <div class="container">
+    <% flash.each do |key, value| %>
+     <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+    </div>
+  <% end %> 
+ <%= yield %>
+ 
+
+</body>
+</html>

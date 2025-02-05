@@ -1,0 +1,23 @@
+<div class="container" align= "center">
+ <h2>Приєднуйся ENJOY!</h2>
+</div>
+
+
+
+<div class="container" align="center">
+    <%= form_for @user, data: {turbo: false} do |form| %>
+        <p><%= form.label :name, 'Хто ти такий, напиши своє імя' %></p>
+        <p><%= form.text_field :name, class: 'form-control' %></p>
+
+        <p><%= form.label :nickname, 'Твій нік' %></p>
+        <p><%= form.text_field :nickname, class: 'form-text-field' %></p>
+
+        <p><%= form.label :email %></p>
+        <p><%= form.text_field :email, class: 'form-text-field' %></p>
+
+        <p class="mt-lg"><%= form.submit 'Зареєструватися', class: 'btn btn-danger'%></p>
+
+    <% end %>
+</div>
+
+

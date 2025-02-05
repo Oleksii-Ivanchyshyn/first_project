@@ -1,0 +1,8 @@
+<h2 class= "title-lg mb" > Редагування питання <%= @question.id %></h2>
+
+<%= form_for @question, url: question_path(@question), method: :patch do |f| %>
+
+<p><%= f.label :body, "Внесить зміни у своє питання" %></p>
+<p><%= f.text_area :body %></p>
+<p><%= f.submit "Оновити" %></p>
+<% end %>

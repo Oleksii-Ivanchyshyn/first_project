@@ -1,0 +1,17 @@
+<h1>Мої питання</h1>
+<% if @questions.any? %>
+<ul>
+    <%= @questions.each do |question| %>
+    <li>
+        <strong><%= question.body %></strong>
+        <small>Створено: <%= question.created_at.strftime('%Y-%m-%d %H:%M:%S')%></small>
+        <%= link_to 'Подивитись', question_path(question) %>
+        <%= link_to 'Редагувати', edit_question_path(question), class: 'btn btn-warning' %>
+        <%= button_to 'Видалити', question_path(question), method: :delete, data: { confirm: 'Добре подумав?'} %>
+        </li>
+    <% end %>
+</ul>
+<% else %>
+<p> немає питань</p>
+<% end %>
+        

@@ -1,0 +1,6 @@
+<%= form_for (question || Question.new) do |form| %>
+  <p><%= form.label :body, 'Пишіть шо турбує' %></p>
+  <p><%= form.text_area :body, rows: 5 %></p>
+
+  <p><%= form.submit 'Тицяй сюди' %></p>
+<% end %>

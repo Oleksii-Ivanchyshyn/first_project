@@ -1,0 +1,62 @@
+<h2>Питання всі</h2>
+
+
+<style>
+
+ table { border-collapse: collapse; width: 100% }
+ th, td {border:1px solid black; padding: 10px; text-align: center}
+ tr:nth-child(even) {background-color: #B7E3AF }
+
+</style>
+
+<table>
+
+  <thead>
+  <tr>
+  <th>Номер</th>
+   <th>Шо ви там понаписували?</th>
+   <th>Дія</th>
+   <th>Видалення</th>
+   <th>Саме питання</th>
+  </tr>
+   </thead>
+   <tbody>
+   <% @questions.each_with_index do |question, index| %>
+    <tr>
+     <td><%=index +1 %></td>
+     <td><%= link_to "Питання #{question.id}", question_path(question), class: 'btn btn-primary' %></td>
+     <td><%=link_to "Редагувати", edit_question_path(question), class: 'btn btn-warning' %></td>
+     <td><%=button_to "Видалити", question, method: :delete, data: {confirm: "Are you sure?"} %>
+     <td><%= question.body %></td>
+    </tr>
+    <% end %>
+   </tbody>
+
+</table>
+
+<h2>Питання з API</h2>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Body</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @api_questions.each do |api_question|%>
+      <tr>
+        <td><%= api_question["id"] %></td>
+          <td><%= api_question["title"] %></td>
+            <td><%= api_question["body"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+</table>
+
+
+
+ <p><%= link_to "Створити нове питання ", new_question_path %></td
+
+<p><h2> Швидке створення питання </h2> 
+ <%= render 'form', question: @question %>

@@ -1,0 +1,13 @@
+<div class= "mb-sm">
+<div>
+    <%= question.body %>
+</div>
+
+<div>
+    <%= l(question.created_at, format: :short )%>
+</div>
+
+<div>
+<%= button_to "Змінити питання", edit_question_path(@question) %>
+<%= button_to "Видалити", question, method: :delete, data: {confirm: "Are you sure?"} %>
+</div>
